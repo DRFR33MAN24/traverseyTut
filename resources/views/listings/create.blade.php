@@ -11,7 +11,7 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
     <p class="mb-4">Post a gig to find a developer</p>
 </header>
 
-<form method="POST" action="/listings">
+<form method="POST" action="/listings" enctype="multipart/form-data">
     @csrf
     <div class="mb-6">
         <label
@@ -23,7 +23,11 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
         type="text"
         class="border border-gray-200 rounded p-2 w-full"
         name="company"
+        value="{{old('company')}}"
         />
+        @error('company')
+        <p>{{$message}}</p>
+        @enderror
     </div>
     
     <div class="mb-6">
@@ -35,7 +39,11 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
         class="border border-gray-200 rounded p-2 w-full"
         name="title"
         placeholder="Example: Senior Laravel Developer"
+        value="{{old('title')}}"
         />
+                @error('title')
+        <p>{{$message}}</p>
+        @enderror
     </div>
     
     <div class="mb-6">
@@ -49,7 +57,11 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="location"
                                 placeholder="Example: Remote, Boston MA, etc"
+                                value="{{old('location')}}"
                                 />
+                                        @error('location')
+        <p>{{$message}}</p>
+        @enderror
                             </div>
                             
                             <div class="mb-6">
@@ -60,7 +72,11 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="email"
+                                value="{{old('email')}}"
                                 />
+                                        @error('email')
+        <p>{{$message}}</p>
+        @enderror
                             </div>
                             
                             <div class="mb-6">
@@ -74,7 +90,11 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
                             type="text"
                             class="border border-gray-200 rounded p-2 w-full"
                             name="website"
+                            value="{{old('website')}}"
                             />
+                                    @error('website')
+        <p>{{$message}}</p>
+        @enderror
                         </div>
                         
                         <div class="mb-6">
@@ -86,7 +106,11 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
                             class="border border-gray-200 rounded p-2 w-full"
                             name="tags"
                             placeholder="Example: Laravel, Backend, Postgres, etc"
+                            value="{{old('tags')}}"
                             />
+                                    @error('tags')
+        <p>{{$message}}</p>
+        @enderror
                         </div>
                         
                         <div class="mb-6">
@@ -98,6 +122,9 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
                             class="border border-gray-200 rounded p-2 w-full"
                             name="logo"
                             />
+                                                                @error('logo')
+        <p>{{$message}}</p>
+        @enderror
                         </div>
                         
                         <div class="mb-6">
@@ -112,11 +139,16 @@ class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
                         name="description"
                         rows="10"
                         placeholder="Include tasks, requirements, salary, etc"
+                        value="{{old('description')}}"
                         ></textarea>
+                                @error('description')
+        <p>{{$message}}</p>
+        @enderror
                     </div>
                     
                     <div class="mb-6">
                         <button
+                     type="submit"
                         class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                         >
                         Create Gig

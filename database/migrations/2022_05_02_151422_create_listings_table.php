@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateListingsTable extends Migration
 {
     /**
@@ -22,6 +23,7 @@ class CreateListingsTable extends Migration
             $table->string('email');
             $table->string('website');
             $table->longText('description');
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }
