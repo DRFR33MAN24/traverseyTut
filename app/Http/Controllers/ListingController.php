@@ -10,9 +10,10 @@ class ListingController extends Controller
     // Show all listings
     public function index()
     {
+
         return view('listings.index', [
             'heading' => 'Latest Listings',
-            'listings' => Listing::all()
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
         ]);
     }
     // Show single listing
@@ -22,5 +23,10 @@ class ListingController extends Controller
         return view('listings.show', [
             'listing' => $listing
         ]);
+    }
+
+    public function create()
+    {
+        return view('listings.create');
     }
 }
